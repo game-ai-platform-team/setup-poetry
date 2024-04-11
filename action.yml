@@ -3,6 +3,8 @@ description: Set up Python and Poetry
 inputs:
   poetry-version:
     default: latest
+  poetry-args:
+    required: false  
   python-version:
     default: "3.11"
   working-directory:
@@ -36,6 +38,6 @@ runs:
         cache-dependency-path: ${{ inputs.working-directory }}/poetry.lock
 
     - name: Install dependencies
-      run: poetry install
+      run: poetry install ${{ inputs.poetry-args }}
       working-directory: ${{ inputs.working-directory }}
       shell: bash
